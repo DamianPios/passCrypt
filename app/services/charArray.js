@@ -45,7 +45,6 @@
                 this.charArray = char;
 
                 for(var i = 0; i < this.charArray.length; i++) {
-                    console.log(i + ': ' + this.charArray[i]);
                 }
             };
 
