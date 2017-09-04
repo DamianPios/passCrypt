@@ -109,7 +109,6 @@
                             $('#generate').prop('disabled', false);
                         }, 5500);
 
-
                         var msg = 'Wypełnij ';
                         if($scope.crypt.login.$invalid) {
                             if($scope.crypt.pass.$invalid) {
