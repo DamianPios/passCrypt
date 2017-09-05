@@ -10,9 +10,6 @@
                 var strtemp = str2 + str1 + str3;
                 var str = [];
 
-                console.log(strCrypt);
-                console.log(strtemp);
-
                 for(var i = 0; i < strtemp.length; i++) {
                     str[i] = (strtemp.charCodeAt(i) + strCrypt.charCodeAt(i % strCrypt.length));
                 }

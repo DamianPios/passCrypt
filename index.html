@@ -26,6 +26,7 @@
         <script src="app/services/charArray.js" type="text/javascript"></script>
         <script src="app/services/crypt.js" type="text/javascript"></script>
         <script src="app/services/pages.js"></script>
+        <script src="app/services/checkSum.js"></script>
         <script src="app/controllers/passCrypt.js" type="text/javascript"></script>
     </head>
     <body ng-app="passCrypt">
@@ -64,7 +65,8 @@
                                    name="login"
                                    type="text"
                                    ng-model="login"
-                                   required />
+                                   required
+                                   ng-keydown="keyDown()" />
                         </div>
                         <div class="form-group">
                             <label for="pass">Hasło</label>
@@ -73,7 +75,8 @@
                                    name="pass"
                                    type="password"
                                    ng-model="pass"
-                                   required />
+                                   required
+                                   ng-keydown="keyDown()" />
                         </div>
                         <button id="generate" ng-click="generate(service, login, pass)"
                                 class="btn btn-success"
@@ -122,6 +125,8 @@
             <div class="row">
                 <div class="col-sm-6">
                     <pre ng-show="output" ng-bind="output"></pre>
+                    <p ng-show="output" style="display: inline">CheckSum: </p>
+                    <pre ng-show="output" ng-bind="checksum" style="display: inline"></pre>
                 </div>
                 <div class="col-sm-6">
                     <h4>Znaki, które będą użyte do budowy hasła</h4>

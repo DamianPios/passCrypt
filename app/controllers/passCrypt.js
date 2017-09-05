@@ -1,8 +1,8 @@
 (function (module) {
     "use strict";
     module.controller('passCrypt',
-        ['$scope', 'cryptService', 'charArray', 'pages', 'toaster', '$timeout',
-            function ($scope, cryptService, charArray, pages, toaster, $timeout) {
+        ['$scope', 'cryptService', 'charArray', 'pages', 'toaster', '$timeout', 'checkSum',
+            function ($scope, cryptService, charArray, pages, toaster, $timeout, checkSum) {
 
                 $scope.otherAdd = false;
                 $scope.array = '';
@@ -36,6 +36,7 @@
                     var login = _login.toString();
                     var pass = _pass.toString();
                     $scope.output = cryptService.crypt(service, login, pass);
+                    $scope.checksum = checkSum.calculate($scope.output);
                 };
 
                 $scope.changeArray = function (addChar, delChar) {
@@ -100,7 +101,6 @@
                     readPages();
                     $scope.service = $scope.services[0];
                 };
-
                 $scope.toaster = function () {
 
                     if($scope.crypt.$invalid) {
@@ -124,5 +124,10 @@
                         toaster.error(msg);
                     }
                 };
+
+                $scope.keyDown = function () {
+                    $('#generate').prop('disabled', false);
+                };
+
             }]);
 }(angular.module('passCrypt')));
